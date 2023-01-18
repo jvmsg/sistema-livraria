@@ -5,7 +5,7 @@ import java.util.UUID;
 public abstract class Produto {
     private String nome;
     private String id;
-    private Double preco;
+    private double preco;
 
     public Produto() {
         this.id = UUID.randomUUID().toString();
@@ -23,11 +23,11 @@ public abstract class Produto {
         return id;
     }
 
-    public Double getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }

@@ -12,7 +12,9 @@ public class Main {
 
         caixa.cadastraProduto(jogo);
         caixa.cadastraProduto(livro);
-        caixa.vendeProduto(new Jogo());
+        caixa.vendeProduto(jogo);
         caixa.vendeProduto(livro);
+
+        System.out.println(caixa.getDinheiro());
     }
 }
