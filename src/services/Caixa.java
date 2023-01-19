@@ -17,6 +17,18 @@ public class Caixa {
         return dinheiro;
     }
 
+    public int getEstoqueCount() {
+        return Estoque.getGlobalCount();
+    }
+
+    public int getProdutoCount(Class c) {
+        try {
+            return estoques.get(c).getCategoryCount();
+        } catch (NullPointerException e) {
+            return 0;
+        }
+    }
+
     public <P extends Produto> boolean cadastraProduto(P produto) {
         try {
             if (estoques.get(produto.getClass()) == null) {
