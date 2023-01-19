@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Caixa {
     private Double dinheiro;
-    private HashMap<Class, Estoque> estoques = new HashMap<>();
+    private HashMap<Class<? extends Produto>, Estoque> estoques = new HashMap<>();
 
     public Caixa(Double dinheiroInicial) {
         this.dinheiro = dinheiroInicial;
@@ -21,7 +21,7 @@ public class Caixa {
         return Estoque.getGlobalCount();
     }
 
-    public int getProdutoCount(Class c) {
+    public int getProdutoCount(Class<? extends Produto> c) {
         try {
             return estoques.get(c).getCategoryCount();
         } catch (NullPointerException e) {
