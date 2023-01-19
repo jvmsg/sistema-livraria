@@ -9,6 +9,15 @@ import java.util.Map;
 
 public class Estoque <P extends Produto> {
     private Map<String, P> produtos = new HashMap<>();
+    private static int count = 0;
+
+    public static int getGlobalCount(){
+        return count;
+    }
+
+    public int getCategoryCount() {
+        return produtos.size();
+    }
 
     public List<P> getListProdutos() {
         return produtos.values().stream().toList();
@@ -16,6 +25,7 @@ public class Estoque <P extends Produto> {
 
     public void cadastraProduto(P produto) {
         produtos.put(produto.getId(), produto);
+        count++;
     }
 
     public P getProdutoById(String id) throws IdNotFoundException {
@@ -36,6 +46,7 @@ public class Estoque <P extends Produto> {
         }
 
         produtos.remove(id);
+        count--;
         return produto;
     }
 }

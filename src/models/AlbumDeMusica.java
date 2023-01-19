@@ -9,6 +9,14 @@ public class AlbumDeMusica extends Produto {
     private List<String> generos;
     private List<String> selos;
 
+    public AlbumDeMusica(double preco) {
+        super(preco);
+    }
+
+    public AlbumDeMusica(double preco, String nome) {
+        super(preco, nome);
+    }
+
     public List<String> getBandas() {
         return bandas;
     }

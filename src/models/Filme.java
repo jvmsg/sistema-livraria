@@ -10,6 +10,14 @@ public class Filme extends Produto {
     private List<String> generos;
     private List<String> produtores;
 
+    public Filme(double preco) {
+        super(preco);
+    }
+
+    public Filme(double preco, String nome) {
+        super(preco, nome);
+    }
+
     public String getEstudio() {
         return estudio;
     }

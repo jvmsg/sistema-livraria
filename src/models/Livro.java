@@ -7,6 +7,14 @@ public class Livro extends Produto {
     private String escritor;
     private String editora;
 
+    public Livro(double preco) {
+        super(preco);
+    }
+
+    public Livro(double preco, String nome) {
+        super(preco, nome);
+    }
+
     public String getGenero() {
         return genero;
     }

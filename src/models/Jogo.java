@@ -7,6 +7,14 @@ public class Jogo extends Produto {
     private String genero;
     private String estudio;
 
+    public Jogo(double preco) {
+        super(preco);
+    }
+
+    public Jogo(double preco, String nome) {
+        super(preco, nome);
+    }
+
     public String getDistribuidora() {
         return distribuidora;
     }

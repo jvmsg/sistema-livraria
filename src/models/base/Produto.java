@@ -7,7 +7,14 @@ public abstract class Produto {
     private String id;
     private double preco;
 
-    public Produto() {
+    public Produto(double preco) {
+        this.preco = preco;
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public Produto(double preco, String nome) {
+        this.nome = nome;
+        this.preco = preco;
         this.id = UUID.randomUUID().toString();
     }
 
