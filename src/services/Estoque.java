@@ -28,12 +28,16 @@ public class Estoque <P extends Produto> {
         count++;
     }
 
-    public P getProdutoById(String id) throws IdNotFoundException {
-        P produto = produtos.get(id);
-
-        if (produto == null) {
-            throw new IdNotFoundException(id);
+    public boolean editProduto(P produto) throws IdNotFoundException {
+        if (getProdutoById(produto.getId()) == null) {
+            throw new IdNotFoundException(produto.getId());
         }
+        produtos.put(produto.getId(), produto);
+        return true;
+    }
+
+    public P getProdutoById(String id) {
+        P produto = produtos.get(id);
 
         return produto;
     }

@@ -1,6 +1,8 @@
 package services;
 
 import models.base.Produto;
+import services.throwables.DuplicateIdError;
+import services.throwables.IdNotFoundException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,18 +31,25 @@ public class Caixa {
         }
     }
 
-    public <P extends Produto> boolean cadastraProduto(P produto) {
-        try {
-            if (estoques.get(produto.getClass()) == null) {
-                estoques.put(produto.getClass(), new Estoque<P>());
-            }
-            estoques.get(produto.getClass()).cadastraProduto(produto);
-            return true;
-        } catch (Exception e) {
-            System.err.printf("[ERROR] %s - $s\n", this.getClass(), e.getMessage());
-            return false;
+    public <P extends Produto> boolean cadastraProduto(P produto) throws DuplicateIdError {
+
+        Estoque<P> estoque = estoques.get(produto.getClass());
+
+        if (estoque == null) {
+            estoque = new Estoque<>();
+            estoques.put(produto.getClass(), estoque);
         }
+
+        if (estoque.getProdutoById(produto.getId()) != null) {
+            throw new DuplicateIdError(produto.getId());
+        }
+
+        estoque.cadastraProduto(produto);
+        return true;
+
     }
+
+
 
     public <P extends Produto> boolean vendeProduto(P produto) {
         try {
